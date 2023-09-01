@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -199,14 +200,17 @@ fun Introduction(text: String, modifier: Modifier = Modifier){
 
 @Composable
 fun SmallButton(text: String, selectedSentence: String?, onClick: () -> Unit) {
+    val customPurple = Color(0xFF800080)
 
         Button(
             onClick = onClick,
+            colors = ButtonDefaults.buttonColors(customPurple),
             modifier = Modifier
                 .width(150.dp)
                 .height(36.dp),
 
             contentPadding = PaddingValues(8.dp)
+
         ) {
             Text(
                 text = text,
@@ -242,11 +246,11 @@ fun Sentence1(name: String, age: Int, modifier: Modifier = Modifier){
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+           // .fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
 
     )
 }
@@ -258,11 +262,11 @@ fun Sentence2(school: String, field: String, modifier: Modifier = Modifier){
         text = "I am studying at $school, the programme $field",
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+           // .fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 
 }
@@ -275,11 +279,11 @@ fun Sentence3(hobby1: String, hobby2: String, hobby3: String, modifier: Modifier
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 
@@ -291,11 +295,11 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 
@@ -309,13 +313,18 @@ fun Sentence5(language1: String,language2:String, language3:String, language4:St
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
+
+// To do : Align the text so that it looks neat, and also some space in between.
+// Implement the customized icon
+// change the color of the button
+// Clean and comment the code before handing it in.
 
 
 @Composable
@@ -326,11 +335,11 @@ fun Sentence6(code1: String,code2:String, code3:String, modifier:Modifier = Modi
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 
@@ -343,11 +352,11 @@ fun Sentence7(show1: String, show2: String, modifier:Modifier = Modifier){
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 
@@ -359,11 +368,11 @@ fun Sentence8(quality1: String, quality2: String, quality3:String,modifier:Modif
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 
@@ -375,11 +384,11 @@ fun Sentence9(topic1:String, topic2: String, topic3: String, modifier: Modifier 
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
 
     )
 }
@@ -392,11 +401,11 @@ val customViolet = Color(0xFFE1A0F9)
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .padding(16.dp),
+            //.fillMaxWidth(),
         fontFamily = FontFamily.Cursive,
         color = customViolet,
-        fontSize = 25.sp
+        fontSize = 30.sp
     )
 }
 @Preview(showBackground = true)
