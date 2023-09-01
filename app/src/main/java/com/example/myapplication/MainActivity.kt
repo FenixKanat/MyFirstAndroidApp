@@ -3,14 +3,18 @@ package com.example.myapplication
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -21,8 +25,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,6 +39,8 @@ import kotlin.random.Random
 
 
 class MainActivity : ComponentActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -43,10 +53,14 @@ class MainActivity : ComponentActivity() {
 
                     Column(
                         modifier = Modifier
-                            .fillMaxSize()
-                            .padding(horizontal = 16.dp),
-                            verticalArrangement = Arrangement.Center
+                            //.fillMaxSize()
+                            //.padding(horizontal = 16.dp),
+                            .size(400.dp),
+                            verticalArrangement = Arrangement.Center,
+                            horizontalAlignment = Alignment.CenterHorizontally
                     ) {
+                        MyImage()
+                        Introduction(text = "Hello, My name is Fenix, and in this app I will be showing some information about myself, Enjoy!")
                         displayedSentence?.let {
                             when (it) {
                                 "sentence1" -> Sentence1(name = "Fenix", age = 26)
@@ -80,24 +94,50 @@ class MainActivity : ComponentActivity() {
 }
 
 
+@Composable
+fun MyImage(modifier: Modifier  = Modifier){
+    Image(
+        painter = painterResource(id = R.drawable.ben),
+        contentDescription = null,
+        modifier = modifier
+            .background(Color.LightGray)
+            .size(400.dp)
+            .fillMaxWidth(),
+        contentScale = ContentScale.Fit
 
+
+    )
+}
+
+@Composable
+fun Introduction(text: String, modifier: Modifier = Modifier){
+    Text (text= text,
+        modifier = modifier,
+        color = Color.Black,
+        fontSize = 16.sp,
+        lineHeight = 19.sp,
+        textAlign = TextAlign.Center
+
+    )
+}
 
 @Composable
 fun SmallButton(text: String, selectedSentence: String?, onClick: () -> Unit) {
-    Button(
-        onClick = onClick,
-        modifier = Modifier
-            .width(150.dp)
-            .height(36.dp),
-        contentPadding = PaddingValues(8.dp)
-    ) {
-        Text(
-            text = text,
-            fontSize = 14.sp
-        )
-    }
-}
 
+        Button(
+            onClick = onClick,
+            modifier = Modifier
+                .width(150.dp)
+                .height(36.dp),
+
+            contentPadding = PaddingValues(8.dp)
+        ) {
+            Text(
+                text = text,
+                fontSize = 14.sp
+            )
+        }
+    }
 
 
 @Composable
@@ -175,6 +215,15 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
     )
 }
 
+@Preview(showBackground = true)
+@Composable
+fun MyScreenPreview() {
+    MyApplicationTheme {
+        Surface {
+            MainActivity()
+        }
+    }
+}
 
 
 
@@ -182,7 +231,7 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
 
 
 
-@Preview(showBackground = true)
+//@Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
     MyApplicationTheme {
