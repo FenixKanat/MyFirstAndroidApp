@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -67,6 +69,12 @@ class MainActivity : ComponentActivity() {
                                 "sentence2" -> Sentence2(school = "HKR", field = "Computer Science")
                                 "sentence3" -> Sentence3(hobby1 = "Coding", hobby2 = "Painting", hobby3 = "Cooking")
                                 "sentence4" -> Sentence4(hobby2 = "Painting")
+                                "sentence5" -> Sentence5(language1= "Turkish", language2 = "Swedish", language3 = "Kurdish", language4 = "English")
+                                "sentence6" -> Sentence6(Code1 ="C#" , Code2 = "Java", Code3="Kotlin")
+                                "sentence7" -> Sentence7(Show1="Stranger Things",Show2="Breaking Bad")
+                                "sentence8" -> Sentence8(quality1 = "Driven", quality2 = "Caring", quality3= "Ambitious")
+                                "sentence9" -> Sentence9(topic1 = "Women's rights", topic2 = "Equality", topic3 = "Inclusiveness")
+                                "sentence10"-> Sentence10(opinion1 ="easy to understand", opinion2 = "easy to read", opinion3="over all great")
                             }
                         }
                         Spacer(modifier = Modifier.height(16.dp))
@@ -77,12 +85,18 @@ class MainActivity : ComponentActivity() {
                             text = "Click here",
                             selectedSentence = displayedSentence,
                             onClick = {
-                                val randomNum = Random.nextInt(4)
+                                val randomNum = Random.nextInt(10)
                                 displayedSentence = when (randomNum) {
                                     0 -> "sentence1"
                                     1 -> "sentence2"
                                     2 -> "sentence3"
-                                    else -> "sentence4"
+                                    3 -> "sentence4"
+                                    4 -> "sentence5"
+                                    5 -> "sentence6"
+                                    6 -> "sentence7"
+                                    7 -> "sentence8"
+                                    8 -> "sentence9"
+                                    else -> "sentence10"
                                 }
                             }
                         )
@@ -114,8 +128,9 @@ fun Introduction(text: String, modifier: Modifier = Modifier){
     Text (text= text,
         modifier = modifier,
         color = Color.Black,
-        fontSize = 16.sp,
+        fontSize = 19.sp,
         lineHeight = 19.sp,
+        fontFamily = FontFamily.SansSerif,
         textAlign = TextAlign.Center
 
     )
@@ -160,9 +175,10 @@ fun Sentence1(name: String, age: Int, modifier: Modifier = Modifier){
     Text(
         text = "My name is $name and I am $age years old",
         modifier = modifier
-            .background(Color.Cyan)
+            .background(Color.LightGray)
             .padding(16.dp)
-            .background(Color.Magenta),
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
 
         color = Color.White,
         fontSize = 15.sp
@@ -174,9 +190,10 @@ fun Sentence2(school: String, field: String, modifier: Modifier = Modifier){
     Text(
         text = "I am studying at $school, the programme $field",
         modifier = modifier
-            .background(Color.Yellow)
+            .background(Color.LightGray)
             .padding(16.dp)
-            .background(Color.Blue),
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
 
         color = Color.White,
         fontSize = 15.sp
@@ -192,7 +209,8 @@ fun Sentence3(hobby1: String, hobby2: String, hobby3: String, modifier: Modifier
         modifier = modifier
             .background(Color.LightGray)
             .padding(16.dp)
-            .background(Color.DarkGray),
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
 
         color = Color.White,
         fontSize = 15.sp
@@ -206,15 +224,118 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
         text="My favorite hobby of them all is $hobby2 because I like that I can freely express myself when $hobby2",
 
         modifier = modifier
-            .background(Color.Green)
+            .background(Color.LightGray)
             .padding(16.dp)
-            .background(Color.Blue),
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
 
         color = Color.White,
         fontSize= 15.sp
     )
 }
 
+
+@Composable
+fun Sentence5(language1: String,language2:String, language3:String, language4:String, modifier:Modifier = Modifier){
+    Text(
+        text= "I can speak four languages fluently, there are: \n $language1, $language2, $language3 and $language4",
+
+
+
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize= 15.sp
+    )
+}
+
+
+@Composable
+fun Sentence6(Code1: String,Code2:String, Code3:String, modifier:Modifier = Modifier){
+    Text(
+        text= "My favorite programming languages are: \n $Code1, $Code2 and $Code3",
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize= 15.sp
+    )
+}
+
+@Composable
+fun Sentence7(Show1: String, Show2: String, modifier:Modifier = Modifier){
+    Text(
+        text= "My favorite shows are: \n $Show1 and $Show2",
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize= 15.sp
+    )
+}
+
+@Composable
+fun Sentence8(quality1: String, quality2: String, quality3:String,modifier:Modifier = Modifier){
+    Text(
+        text= "My friends describe me as: \n $quality1, $quality2 and $quality3",
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize= 15.sp
+    )
+}
+
+@Composable
+fun Sentence9(topic1:String, topic2: String, topic3: String, modifier: Modifier = Modifier){
+    Text(
+        text= "The topics that I am passionate about are: \n $topic1, $topic2 and $topic3",
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize = 15.sp
+
+    )
+}
+
+@Composable
+fun Sentence10(opinion1 :String, opinion2 : String, opinion3 : String, modifier:Modifier = Modifier){
+
+    Text(
+        text= "I would say kotlin is a very $opinion1, $opinion2 and $opinion3 programming language.",
+
+        modifier = modifier
+            .background(Color.LightGray)
+            .padding(16.dp)
+            .background(Color.DarkGray)
+            .fillMaxWidth(),
+
+        color = Color.White,
+        fontSize = 15.sp
+    )
+}
 @Preview(showBackground = true)
 @Composable
 fun MyScreenPreview() {
