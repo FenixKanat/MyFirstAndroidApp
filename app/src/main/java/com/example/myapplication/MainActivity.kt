@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,6 +34,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -55,7 +57,9 @@ class MainActivity : ComponentActivity() {
                     var displayedSentence by remember { mutableStateOf<String?>(null) }
 
                     Box(
+
                         modifier = Modifier.fillMaxSize()) {
+
                         Image(
                             painter = painterResource(id = R.drawable.purple),
                             contentDescription = null,
@@ -68,69 +72,83 @@ class MainActivity : ComponentActivity() {
                                 .fillMaxSize(),
                                 verticalArrangement = Arrangement.Center,
                                 horizontalAlignment = Alignment.CenterHorizontally
-                                //.padding(horizontal = 16.dp),
+
 
                         ) {
                             MyImage()
-                            Introduction(text = "Hello, My name is Fenix, and in this app I will be showing some information about myself, Enjoy!")
+                            Introduction(text = "Hello, This app is developed for Lab1 Development of Mobile applications by Fenix Kanat, using kotlin jetpack compose.")
                             displayedSentence?.let {
                                 when (it) {
-                                    "sentence1" -> Sentence1(name = "Fenix", age = 26)
-                                    "sentence2" -> Sentence2(
-                                        school = "HKR",
-                                        field = "Computer Science"
-                                    )
+                                    "sentence1" ->{
+                                        Sentence1(name = "Fenix", age = 26)
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence3" -> Sentence3(
+                                    "sentence2" ->{ Sentence2(
+                                        school = "HKR",
+                                        field = "Computer Science" ,
+
+                                    )
+                                        Spacer(Modifier.height(25.dp))}
+
+                                    "sentence3" ->{ Sentence3(
                                         hobby1 = "Coding",
                                         hobby2 = "Painting",
                                         hobby3 = "Cooking"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence4" -> Sentence4(hobby2 = "Painting")
-                                    "sentence5" -> Sentence5(
+                                    "sentence4" -> {Sentence4(hobby2 = "Painting")
+                                        Spacer(Modifier.height(25.dp))}
+
+                                    "sentence5" -> {Sentence5(
                                         language1 = "Turkish",
                                         language2 = "Swedish",
                                         language3 = "Kurdish",
                                         language4 = "English"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence6" -> Sentence6(
+                                    "sentence6" -> {Sentence6(
                                         code1 = "C#",
                                         code2 = "Java",
                                         code3 = "Kotlin"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence7" -> Sentence7(
+                                    "sentence7" ->{ Sentence7(
                                         show1 = "Stranger Things",
                                         show2 = "Breaking Bad"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence8" -> Sentence8(
+                                    "sentence8" ->{ Sentence8(
                                         quality1 = "Driven",
                                         quality2 = "Caring",
                                         quality3 = "Ambitious"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence9" -> Sentence9(
+                                    "sentence9" ->{ Sentence9(
                                         topic1 = "Women's rights",
                                         topic2 = "Equality",
                                         topic3 = "Inclusiveness"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
 
-                                    "sentence10" -> Sentence10(
+                                    "sentence10" ->{ Sentence10(
                                         opinion1 = "easy to understand",
                                         opinion2 = "easy to read",
                                         opinion3 = "over all great"
                                     )
+                                        Spacer(Modifier.height(25.dp))}
                                 }
                             }
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(25.dp))
 
 
 
                             SmallButton(
-                                text = "Click here",
+                                text = "About Me",
                                 selectedSentence = displayedSentence,
                                 onClick = {
                                     val randomNum = Random.nextInt(10)
@@ -157,21 +175,11 @@ class MainActivity : ComponentActivity() {
 
 
 }
-@Composable
-fun BackgroundImage(modifier: Modifier = Modifier){
-    Image(
-        painter = painterResource(id = R.drawable.purple),
-        contentDescription = null,
-        modifier = Modifier
-            .fillMaxSize(),
-        contentScale = ContentScale.Crop
 
-    )
-}
+
 @Composable
 fun MyImage(modifier: Modifier  = Modifier){
 
-    val customViolet = Color(0xFFE1A0F9)
     Image(
         painter = painterResource(id = R.drawable.ben),
         contentDescription = null,
@@ -185,21 +193,27 @@ fun MyImage(modifier: Modifier  = Modifier){
     )
 }
 
+
 @Composable
 fun Introduction(text: String, modifier: Modifier = Modifier){
+
     Text (text= text,
-        modifier = modifier,
-        color = Color.White,
-        fontSize = 30.sp,
-        lineHeight = 19.sp,
-        fontFamily = FontFamily.Cursive,
-        textAlign = TextAlign.Center
+        modifier = modifier
+            .background(Color.Transparent)
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
+        color =  Color.White,
+        fontSize = 20.sp
 
     )
 }
 
+
+@SuppressLint("SuspiciousIndentation")
 @Composable
-fun SmallButton(text: String, selectedSentence: String?, onClick: () -> Unit) {
+fun SmallButton(text: String, selectedSentence: String?, onClick: () -> Unit, modifier : Modifier = Modifier) {
     val customPurple = Color(0xFF800080)
 
         Button(
@@ -221,22 +235,8 @@ fun SmallButton(text: String, selectedSentence: String?, onClick: () -> Unit) {
 
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-            text = "Hello $name!",
-            modifier = modifier
-                .background(Color.White)
-                .padding(16.dp)
-                .background(Color.Blue),
-                fontFamily = FontFamily.Monospace ,
-
-            color = Color.Black,
-            fontSize = 15.sp
-    )
-}
-
-@Composable
 fun Sentence1(name: String, age: Int, modifier: Modifier = Modifier){
+
     val customPurple = Color(0xFF800080)
     val customViolet = Color(0xFFE1A0F9)
 
@@ -246,14 +246,16 @@ fun Sentence1(name: String, age: Int, modifier: Modifier = Modifier){
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-           // .fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
 
     )
 }
+
 
 @Composable
 fun Sentence2(school: String, field: String, modifier: Modifier = Modifier){
@@ -262,14 +264,16 @@ fun Sentence2(school: String, field: String, modifier: Modifier = Modifier){
         text = "I am studying at $school, the programme $field",
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-           // .fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 
 }
+
 
 @Composable
 fun Sentence3(hobby1: String, hobby2: String, hobby3: String, modifier: Modifier = Modifier){
@@ -279,13 +283,15 @@ fun Sentence3(hobby1: String, hobby2: String, hobby3: String, modifier: Modifier
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
+
 
 @Composable
 fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
@@ -295,11 +301,12 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
 
@@ -308,90 +315,94 @@ fun Sentence4(hobby2: String, modifier:Modifier = Modifier){
 fun Sentence5(language1: String,language2:String, language3:String, language4:String, modifier:Modifier = Modifier){
     val customViolet= Color(0xFFE1A0F9)
     Text(
-        text= "I can speak four languages fluently, there are: \n $language1, $language2, $language3 and $language4",
+        text= "I can speak four languages fluently, these are:  $language1, $language2, $language3 and $language4",
 
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
-
-// To do : Align the text so that it looks neat, and also some space in between.
-// Implement the customized icon
-// change the color of the button
-// Clean and comment the code before handing it in.
 
 
 @Composable
 fun Sentence6(code1: String,code2:String, code3:String, modifier:Modifier = Modifier){
     val customViolet = Color(0xFFE1A0F9)
     Text(
-        text= "My favorite programming languages are: \n $code1, $code2 and $code3",
+        text= "My favorite programming languages are: $code1, $code2 and $code3",
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
+
 
 @Composable
 fun Sentence7(show1: String, show2: String, modifier:Modifier = Modifier){
 
     val customViolet=Color(0xFFE1A0F9)
     Text(
-        text= "My favorite shows are: \n $show1 and $show2",
+        text= "My favorite shows are: $show1 and $show2",
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
+
 
 @Composable
 fun Sentence8(quality1: String, quality2: String, quality3:String,modifier:Modifier = Modifier){
     val customViolet = Color(0xFFE1A0F9)
     Text(
-        text= "My friends describe me as: \n $quality1, $quality2 and $quality3",
+        text= "My friends describe me as: $quality1, $quality2 and $quality3",
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
+
 
 @Composable
 fun Sentence9(topic1:String, topic2: String, topic3: String, modifier: Modifier = Modifier){
     val customViolet = Color(0xFFE1A0F9)
     Text(
-        text= "The topics that I am passionate about are: \n $topic1, $topic2 and $topic3",
+        text= "The topics that I am passionate about are: $topic1, $topic2 and $topic3",
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
 
     )
 }
+
 
 @Composable
 fun Sentence10(opinion1 :String, opinion2 : String, opinion3 : String, modifier:Modifier = Modifier){
@@ -401,13 +412,17 @@ val customViolet = Color(0xFFE1A0F9)
 
         modifier = modifier
             .background(Color.Transparent)
-            .padding(16.dp),
-            //.fillMaxWidth(),
-        fontFamily = FontFamily.Cursive,
+            .padding(16.dp)
+            .fillMaxWidth(),
+
+        fontFamily = FontFamily.SansSerif,
+        fontWeight = FontWeight.Bold,
         color = customViolet,
-        fontSize = 30.sp
+        fontSize = 20.sp
     )
 }
+
+
 @Preview(showBackground = true)
 @Composable
 fun MyScreenPreview() {
@@ -420,14 +435,5 @@ fun MyScreenPreview() {
 
 
 
-// Add picture, center the button
 
 
-
-//@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("You are so fucking slow")
-    }
-}
